@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import org.jetbrains.anko.find
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val items = listOf(
@@ -20,8 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val forecast_list = findViewById(R.id.forecast_list) as RecyclerView
+//        val forecast_list = findViewById(R.id.forecast_list) as RecyclerView
+        val forecast_list: RecyclerView = find(R.id.forecast_list)
         forecast_list.layoutManager = LinearLayoutManager(this)
         forecast_list.adapter = ForecastListAdapter(items)
     }
+
 }
