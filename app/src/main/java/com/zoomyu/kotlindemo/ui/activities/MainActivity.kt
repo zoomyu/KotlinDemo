@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView
 import com.zoomyu.kotlindemo.adapter.ForecastListAdapter
 import com.zoomyu.kotlindemo.R
 import com.zoomyu.kotlindemo.domain.commands.RequestForecastCommand
+import com.zoomyu.kotlindemo.domain.model.Forecast
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("1796231").execute()
             uiThread {
-                forecast_list.adapter = ForecastListAdapter(result)
+                forecast_list.adapter = ForecastListAdapter(result, object : ForecastListAdapter.OnItemClickListener{
+                    override fun invoke(forecast: Forecast) {
+                        toast(forecast.date)
+                    }
+                })
             }
         }
     }

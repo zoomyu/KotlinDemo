@@ -8,9 +8,9 @@ import com.zoomyu.kotlindemo.domain.model.ForecastList
  * Created by yuwei on 17-6-7.
  */
 
-class RequestForecastCommand(val zipCode: String) : Command<ForecastList> {
+class RequestForecastCommand(val cityID: String) : Command<ForecastList> {
     override fun execute(): ForecastList {
-        val forecastRequest = ForecastRequest(zipCode)
+        val forecastRequest = ForecastRequest(cityID)
         return ForecastDataMapper().convertFromDataModel(forecastRequest.execute())
     }
 }

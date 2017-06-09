@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_xlarge">16dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_0">0dp</dimen>
+</resources>
